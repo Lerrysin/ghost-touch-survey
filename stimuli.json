@@ -1,0 +1,2195 @@
+{
+  "metadata": {
+    "description": "User evaluation stimuli for Ghost Touch haptic pipeline",
+    "part1_description": "3AFC semantic alignment: match text to correct haptic profile",
+    "part2_description": "Baseline comparison: rank pipeline vs rule-based vs random",
+    "n_part1_trials": 20,
+    "n_part2_trials": 10,
+    "chance_level_part1": 0.3333333333333333,
+    "seed": 42
+  },
+  "families": [
+    {
+      "id": "cold_ice",
+      "name": "COLD/ICE",
+      "category": "Environmental Transformation",
+      "excerpt": "The room went ice cold, like walking into a freezer. The kind of chill that sinks into your bones and doesn't leave even after you step away."
+    },
+    {
+      "id": "absence_void",
+      "name": "ABSENCE/VOID",
+      "category": "Liminal Materiality",
+      "excerpt": "It felt like nothing was there but something was missing—like a hole in the air where a person should be. An empty shape pressing against you."
+    },
+    {
+      "id": "electricity_static",
+      "name": "ELECTRICITY/STATIC",
+      "category": "Forceful Encounter",
+      "excerpt": "A cluster of energy hovering just above the skin, like sparks jumping between fingertips. The hair on my arms stood straight up."
+    },
+    {
+      "id": "mist_air_smoke",
+      "name": "MIST/AIR/SMOKE",
+      "category": "Environmental Transformation",
+      "excerpt": "A gentle breeze passed through the room though all windows were closed, like walking through fog. It moved around me slowly, then was gone."
+    },
+    {
+      "id": "pressure_force",
+      "name": "PRESSURE/FORCE",
+      "category": "Forceful Encounter",
+      "excerpt": "Sudden pressure on my chest, like an invisible hand pressing down hard. It held me there for a few seconds before lifting."
+    },
+    {
+      "id": "water_liquid",
+      "name": "WATER/LIQUID",
+      "category": "Environmental Transformation",
+      "excerpt": "It felt like something warm and liquid was flowing down my arm, though nothing was there. A smooth, slow trickle from shoulder to fingertips."
+    },
+    {
+      "id": "temperature_change",
+      "name": "TEMPERATURE_CHANGE",
+      "category": "Environmental Transformation",
+      "excerpt": "The air shifted from normal to burning hot in seconds, then back to cold. Like waves of heat and chill rolling through the space."
+    },
+    {
+      "id": "tingling_prickling",
+      "name": "TINGLING/PRICKLING",
+      "category": "Liminal Materiality",
+      "excerpt": "Tiny pinpricks crawling up my spine, like static electricity dancing on my skin. Not painful, but impossible to ignore."
+    },
+    {
+      "id": "vibration_pulse",
+      "name": "VIBRATION/PULSE",
+      "category": "Forceful Encounter",
+      "excerpt": "A deep, rhythmic pulsing that I felt in my chest, like a heartbeat that wasn't mine. It came in steady waves, then stopped."
+    },
+    {
+      "id": "fabric_veil_cobweb",
+      "name": "FABRIC/VEIL/COBWEB",
+      "category": "Liminal Materiality",
+      "excerpt": "Something gossamer-thin brushed across my face, like walking through an invisible cobweb. So light I almost didn't notice it."
+    }
+  ],
+  "profiles": {
+    "pipeline": {
+      "cold_ice": {
+        "frequency_hz": 200,
+        "amplitude_pct": 24,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 1000,
+        "duration_ms": 4500,
+        "modulation_hz": 0.4,
+        "thermal_delta_c": -3.5,
+        "roughness": 0.12
+      },
+      "absence_void": {
+        "frequency_hz": 180,
+        "amplitude_pct": 22,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 850,
+        "duration_ms": 2800,
+        "modulation_hz": 0.4,
+        "thermal_delta_c": -1.6,
+        "roughness": 0.18
+      },
+      "electricity_static": {
+        "frequency_hz": 180,
+        "amplitude_pct": 44,
+        "waveform": "noise",
+        "envelope": "fade_in_out",
+        "onset_ms": 180,
+        "duration_ms": 2200,
+        "modulation_hz": 1.2,
+        "thermal_delta_c": 1.7,
+        "roughness": 0.76
+      },
+      "mist_air_smoke": {
+        "frequency_hz": 185,
+        "amplitude_pct": 22,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 900,
+        "duration_ms": 3200,
+        "modulation_hz": 0.35,
+        "thermal_delta_c": -2.3,
+        "roughness": 0.18
+      },
+      "pressure_force": {
+        "frequency_hz": 170,
+        "amplitude_pct": 82,
+        "waveform": "sine",
+        "envelope": "sustained",
+        "onset_ms": 120,
+        "duration_ms": 2400,
+        "modulation_hz": 0.5,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.32
+      },
+      "water_liquid": {
+        "frequency_hz": 170,
+        "amplitude_pct": 28,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 700,
+        "duration_ms": 3500,
+        "modulation_hz": 0.4,
+        "thermal_delta_c": -1.4,
+        "roughness": 0.08
+      },
+      "temperature_change": {
+        "frequency_hz": 180,
+        "amplitude_pct": 40,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 900,
+        "duration_ms": 4200,
+        "modulation_hz": 0.35,
+        "thermal_delta_c": 2.4,
+        "roughness": 0.2
+      },
+      "tingling_prickling": {
+        "frequency_hz": 190,
+        "amplitude_pct": 30,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 200,
+        "duration_ms": 2800,
+        "modulation_hz": 1.7,
+        "thermal_delta_c": -0.8,
+        "roughness": 0.66
+      },
+      "vibration_pulse": {
+        "frequency_hz": 190,
+        "amplitude_pct": 42,
+        "waveform": "sine",
+        "envelope": "rhythmic",
+        "onset_ms": 25,
+        "duration_ms": 1100,
+        "modulation_hz": 2.4,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.2
+      },
+      "fabric_veil_cobweb": {
+        "frequency_hz": 32,
+        "amplitude_pct": 5,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 1800,
+        "duration_ms": 5000,
+        "modulation_hz": 0.2,
+        "thermal_delta_c": -0.6,
+        "roughness": 0.12
+      }
+    },
+    "rule_based": {
+      "cold_ice": {
+        "frequency_hz": 60,
+        "amplitude_pct": 15,
+        "waveform": "sine",
+        "envelope": "sustained",
+        "onset_ms": 500,
+        "duration_ms": 5000,
+        "modulation_hz": 0.1,
+        "thermal_delta_c": -4.0,
+        "roughness": 0.05
+      },
+      "absence_void": {
+        "frequency_hz": 40,
+        "amplitude_pct": 8,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 1200,
+        "duration_ms": 3000,
+        "modulation_hz": 0.05,
+        "thermal_delta_c": -1.0,
+        "roughness": 0.1
+      },
+      "electricity_static": {
+        "frequency_hz": 250,
+        "amplitude_pct": 70,
+        "waveform": "noise",
+        "envelope": "burst",
+        "onset_ms": 50,
+        "duration_ms": 1500,
+        "modulation_hz": 3.0,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.9
+      },
+      "mist_air_smoke": {
+        "frequency_hz": 30,
+        "amplitude_pct": 10,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 2000,
+        "duration_ms": 4000,
+        "modulation_hz": 0.1,
+        "thermal_delta_c": -2.0,
+        "roughness": 0.05
+      },
+      "pressure_force": {
+        "frequency_hz": 50,
+        "amplitude_pct": 90,
+        "waveform": "square",
+        "envelope": "sustained",
+        "onset_ms": 100,
+        "duration_ms": 3000,
+        "modulation_hz": 0.0,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.4
+      },
+      "water_liquid": {
+        "frequency_hz": 80,
+        "amplitude_pct": 25,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 800,
+        "duration_ms": 4000,
+        "modulation_hz": 0.3,
+        "thermal_delta_c": -1.5,
+        "roughness": 0.02
+      },
+      "temperature_change": {
+        "frequency_hz": 100,
+        "amplitude_pct": 35,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 600,
+        "duration_ms": 3500,
+        "modulation_hz": 0.5,
+        "thermal_delta_c": 3.0,
+        "roughness": 0.15
+      },
+      "tingling_prickling": {
+        "frequency_hz": 200,
+        "amplitude_pct": 25,
+        "waveform": "noise",
+        "envelope": "fade_in_out",
+        "onset_ms": 300,
+        "duration_ms": 2000,
+        "modulation_hz": 2.0,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.8
+      },
+      "vibration_pulse": {
+        "frequency_hz": 120,
+        "amplitude_pct": 50,
+        "waveform": "pulse",
+        "envelope": "rhythmic",
+        "onset_ms": 50,
+        "duration_ms": 1500,
+        "modulation_hz": 3.0,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.15
+      },
+      "fabric_veil_cobweb": {
+        "frequency_hz": 25,
+        "amplitude_pct": 3,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 2000,
+        "duration_ms": 4000,
+        "modulation_hz": 0.1,
+        "thermal_delta_c": 0.0,
+        "roughness": 0.08
+      }
+    },
+    "random": {
+      "cold_ice": {
+        "frequency_hz": 199,
+        "amplitude_pct": 7,
+        "waveform": "square",
+        "envelope": "fade_in_out",
+        "onset_ms": 454,
+        "duration_ms": 4551,
+        "modulation_hz": 2.03,
+        "thermal_delta_c": 3.9,
+        "roughness": 0.09
+      },
+      "absence_void": {
+        "frequency_hz": 31,
+        "amplitude_pct": 68,
+        "waveform": "noise",
+        "envelope": "rhythmic",
+        "onset_ms": 746,
+        "duration_ms": 4341,
+        "modulation_hz": 0.29,
+        "thermal_delta_c": 1.0,
+        "roughness": 0.61
+      },
+      "electricity_static": {
+        "frequency_hz": 134,
+        "amplitude_pct": 54,
+        "waveform": "sine",
+        "envelope": "fade_in_out",
+        "onset_ms": 765,
+        "duration_ms": 2093,
+        "modulation_hz": 0.67,
+        "thermal_delta_c": 0.7,
+        "roughness": 0.1
+      },
+      "mist_air_smoke": {
+        "frequency_hz": 96,
+        "amplitude_pct": 49,
+        "waveform": "sine",
+        "envelope": "burst",
+        "onset_ms": 684,
+        "duration_ms": 898,
+        "modulation_hz": 0.03,
+        "thermal_delta_c": -2.2,
+        "roughness": 0.12
+      },
+      "pressure_force": {
+        "frequency_hz": 269,
+        "amplitude_pct": 41,
+        "waveform": "noise",
+        "envelope": "fade_in_out",
+        "onset_ms": 1172,
+        "duration_ms": 5710,
+        "modulation_hz": 0.1,
+        "thermal_delta_c": -4.3,
+        "roughness": 0.32
+      },
+      "water_liquid": {
+        "frequency_hz": 119,
+        "amplitude_pct": 44,
+        "waveform": "pulse",
+        "envelope": "burst",
+        "onset_ms": 522,
+        "duration_ms": 2626,
+        "modulation_hz": 1.85,
+        "thermal_delta_c": 3.0,
+        "roughness": 0.66
+      },
+      "temperature_change": {
+        "frequency_hz": 173,
+        "amplitude_pct": 17,
+        "waveform": "square",
+        "envelope": "fade_in_out",
+        "onset_ms": 1431,
+        "duration_ms": 2897,
+        "modulation_hz": 0.46,
+        "thermal_delta_c": 3.1,
+        "roughness": 0.66
+      },
+      "tingling_prickling": {
+        "frequency_hz": 39,
+        "amplitude_pct": 42,
+        "waveform": "sine",
+        "envelope": "burst",
+        "onset_ms": 1507,
+        "duration_ms": 3312,
+        "modulation_hz": 0.15,
+        "thermal_delta_c": -4.6,
+        "roughness": 0.74
+      },
+      "vibration_pulse": {
+        "frequency_hz": 159,
+        "amplitude_pct": 29,
+        "waveform": "noise",
+        "envelope": "rhythmic",
+        "onset_ms": 1536,
+        "duration_ms": 2315,
+        "modulation_hz": 1.62,
+        "thermal_delta_c": -2.8,
+        "roughness": 0.56
+      },
+      "fabric_veil_cobweb": {
+        "frequency_hz": 88,
+        "amplitude_pct": 50,
+        "waveform": "noise",
+        "envelope": "fade_in_out",
+        "onset_ms": 1644,
+        "duration_ms": 1773,
+        "modulation_hz": 1.66,
+        "thermal_delta_c": 4.3,
+        "roughness": 0.4
+      }
+    }
+  },
+  "part1_trials": [
+    {
+      "trial_id": 0,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "mist_air_smoke",
+      "target_family_name": "MIST/AIR/SMOKE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "A gentle breeze passed through the room though all windows were closed, like walking through fog. It moved around me slowly, then was gone.",
+      "options": [
+        {
+          "family_id": "electricity_static",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "mist_air_smoke",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "明明所有窗户都关着，房间里却掠过一阵轻柔的风，像穿行在雾里。它在皮肤上留下微凉而潮湿的触感，几秒后便悄然消散。"
+    },
+    {
+      "trial_id": 1,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "vibration_pulse",
+      "target_family_name": "VIBRATION/PULSE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A deep, rhythmic pulsing that I felt in my chest, like a heartbeat that wasn't mine. It came in steady waves, then stopped.",
+      "options": [
+        {
+          "family_id": "water_liquid",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 28,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 700,
+            "duration_ms": 3500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.4,
+            "roughness": 0.08
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "vibration_pulse",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "我胸口深处传来一种低沉而有节律的搏动，像一颗不属于我的心脏在跳。它一波一波稳定袭来，每一下都在我全身回荡震颤。"
+    },
+    {
+      "trial_id": 2,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "temperature_change",
+      "target_family_name": "TEMPERATURE_CHANGE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The air shifted from normal to burning hot in seconds, then back to cold. Like waves of heat and chill rolling through the space.",
+      "options": [
+        {
+          "family_id": "vibration_pulse",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "absence_void",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "temperature_change",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "空气在短短几秒内从平常骤然变得灼热滚烫，接着又迅速转冷。像一阵阵热浪与寒意轮番冲刷全身，每一次转换都尖锐而分明。"
+    },
+    {
+      "trial_id": 3,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "electricity_static",
+      "target_family_name": "ELECTRICITY/STATIC",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A cluster of energy hovering just above the skin, like sparks jumping between fingertips. The hair on my arms stood straight up.",
+      "options": [
+        {
+          "family_id": "electricity_static",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "mist_air_smoke",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "一团能量悬停在皮肤上方，仿佛火花在指尖之间跳跃。手臂上的汗毛一下子都竖了起来，还有一种强烈的嗡鸣感，几乎像电流掠过般酥麻震颤。"
+    },
+    {
+      "trial_id": 4,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "tingling_prickling",
+      "target_family_name": "TINGLING/PRICKLING",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Tiny pinpricks crawling up my spine, like static electricity dancing on my skin. Not painful, but impossible to ignore.",
+      "options": [
+        {
+          "family_id": "vibration_pulse",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "temperature_change",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "细小如针刺般的麻点沿着我的脊背一路往上爬，像静电在皮肤上跳舞。不算疼，却让人根本无法忽视——那股挥之不去的酥麻持续不停。"
+    },
+    {
+      "trial_id": 5,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "cold_ice",
+      "target_family_name": "COLD/ICE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The room went ice cold, like walking into a freezer. The kind of chill that sinks into your bones and doesn't leave even after you step away.",
+      "options": [
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "cold_ice",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "B",
+      "excerpt_zh": "整个房间一下子冷得像冰窖，仿佛迎面走进了冷冻库。那种寒意直往骨头里钻，冷得手指都发麻。"
+    },
+    {
+      "trial_id": 6,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "mist_air_smoke",
+      "target_family_name": "MIST/AIR/SMOKE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "A gentle breeze passed through the room though all windows were closed, like walking through fog. It moved around me slowly, then was gone.",
+      "options": [
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "mist_air_smoke",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "B",
+      "excerpt_zh": "明明所有窗户都关着，房间里却掠过一阵轻柔的风，像穿行在雾里。它在皮肤上留下微凉而潮湿的触感，几秒后便悄然消散。"
+    },
+    {
+      "trial_id": 7,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "electricity_static",
+      "target_family_name": "ELECTRICITY/STATIC",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A cluster of energy hovering just above the skin, like sparks jumping between fingertips. The hair on my arms stood straight up.",
+      "options": [
+        {
+          "family_id": "electricity_static",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "mist_air_smoke",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "absence_void",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "一团能量悬停在皮肤上方，仿佛火花在指尖之间跳跃。手臂上的汗毛一下子都竖了起来，还有一种强烈的嗡鸣感，几乎像电流掠过般酥麻震颤。"
+    },
+    {
+      "trial_id": 8,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "vibration_pulse",
+      "target_family_name": "VIBRATION/PULSE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A deep, rhythmic pulsing that I felt in my chest, like a heartbeat that wasn't mine. It came in steady waves, then stopped.",
+      "options": [
+        {
+          "family_id": "vibration_pulse",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "mist_air_smoke",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "我胸口深处传来一种低沉而有节律的搏动，像一颗不属于我的心脏在跳。它一波一波稳定袭来，每一下都在我全身回荡震颤。"
+    },
+    {
+      "trial_id": 9,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "temperature_change",
+      "target_family_name": "TEMPERATURE_CHANGE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The air shifted from normal to burning hot in seconds, then back to cold. Like waves of heat and chill rolling through the space.",
+      "options": [
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "temperature_change",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "空气在短短几秒内从平常骤然变得灼热滚烫，接着又迅速转冷。像一阵阵热浪与寒意轮番冲刷全身，每一次转换都尖锐而分明。"
+    },
+    {
+      "trial_id": 10,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "tingling_prickling",
+      "target_family_name": "TINGLING/PRICKLING",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Tiny pinpricks crawling up my spine, like static electricity dancing on my skin. Not painful, but impossible to ignore.",
+      "options": [
+        {
+          "family_id": "water_liquid",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 28,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 700,
+            "duration_ms": 3500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.4,
+            "roughness": 0.08
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "细小如针刺般的麻点沿着我的脊背一路往上爬，像静电在皮肤上跳舞。不算疼，却让人根本无法忽视——那股挥之不去的酥麻持续不停。"
+    },
+    {
+      "trial_id": 11,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "absence_void",
+      "target_family_name": "ABSENCE/VOID",
+      "target_category": "Liminal Materiality",
+      "excerpt": "It felt like nothing was there but something was missing—like a hole in the air where a person should be. An empty shape pressing against you.",
+      "options": [
+        {
+          "family_id": "vibration_pulse",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "absence_void",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "cold_ice",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "B",
+      "excerpt_zh": "感觉那里明明什么都没有，却又像缺失了什么——仿佛空气中有一个本该站着人的空洞。那是一种空茫而中空的异样感，好像那片空间本身有重量，却没有实体。"
+    },
+    {
+      "trial_id": 12,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "fabric_veil_cobweb",
+      "target_family_name": "FABRIC/VEIL/COBWEB",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Something gossamer-thin brushed across my face, like walking through an invisible cobweb. So light I almost didn't notice it.",
+      "options": [
+        {
+          "family_id": "cold_ice",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "C",
+      "excerpt_zh": "有什么薄如蝉翼的东西轻轻掠过我的脸，像一头撞进了看不见的蛛网。轻得让我几乎怀疑自己是否真的感觉到了，但那丝发痒的痕迹却迟迟不散。"
+    },
+    {
+      "trial_id": 13,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "absence_void",
+      "target_family_name": "ABSENCE/VOID",
+      "target_category": "Liminal Materiality",
+      "excerpt": "It felt like nothing was there but something was missing—like a hole in the air where a person should be. An empty shape pressing against you.",
+      "options": [
+        {
+          "family_id": "absence_void",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "cold_ice",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "感觉那里明明什么都没有，却又像缺失了什么——仿佛空气中有一个本该站着人的空洞。那是一种空茫而中空的异样感，好像那片空间本身有重量，却没有实体。"
+    },
+    {
+      "trial_id": 14,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "pressure_force",
+      "target_family_name": "PRESSURE/FORCE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "Sudden pressure on my chest, like an invisible hand pressing down hard. It held me there for a few seconds before lifting.",
+      "options": [
+        {
+          "family_id": "absence_void",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "pressure_force",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "temperature_change",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "B",
+      "excerpt_zh": "胸口猛然压下一股力量，像一只看不见的手狠狠按住我。它将我死死钉在那里几秒钟，沉重得无法挣脱，随后又在一瞬间全部松开。"
+    },
+    {
+      "trial_id": 15,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "water_liquid",
+      "target_family_name": "WATER/LIQUID",
+      "target_category": "Environmental Transformation",
+      "excerpt": "It felt like something warm and liquid was flowing down my arm, though nothing was there. A smooth, slow trickle from shoulder to fingertips.",
+      "options": [
+        {
+          "family_id": "water_liquid",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 28,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 700,
+            "duration_ms": 3500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.4,
+            "roughness": 0.08
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "electricity_static",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "absence_void",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "感觉像有什么温热的液体正顺着我的手臂往下流，然而那里其实什么也没有。那股流动平滑而稳定，像温水从肩头缓缓浇下，一路淌到手腕。"
+    },
+    {
+      "trial_id": 16,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "pressure_force",
+      "target_family_name": "PRESSURE/FORCE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "Sudden pressure on my chest, like an invisible hand pressing down hard. It held me there for a few seconds before lifting.",
+      "options": [
+        {
+          "family_id": "pressure_force",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "cold_ice",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "胸口猛然压下一股力量，像一只看不见的手狠狠按住我。它将我死死钉在那里几秒钟，沉重得无法挣脱，随后又在一瞬间全部松开。"
+    },
+    {
+      "trial_id": 17,
+      "part": 1,
+      "repetition": 2,
+      "target_family": "fabric_veil_cobweb",
+      "target_family_name": "FABRIC/VEIL/COBWEB",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Something gossamer-thin brushed across my face, like walking through an invisible cobweb. So light I almost didn't notice it.",
+      "options": [
+        {
+          "family_id": "fabric_veil_cobweb",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "temperature_change",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "electricity_static",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "有什么薄如蝉翼的东西轻轻掠过我的脸，像一头撞进了看不见的蛛网。轻得让我几乎怀疑自己是否真的感觉到了，但那丝发痒的痕迹却迟迟不散。"
+    },
+    {
+      "trial_id": 18,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "cold_ice",
+      "target_family_name": "COLD/ICE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The room went ice cold, like walking into a freezer. The kind of chill that sinks into your bones and doesn't leave even after you step away.",
+      "options": [
+        {
+          "family_id": "absence_void",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "cold_ice",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "electricity_static",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "B",
+      "excerpt_zh": "整个房间一下子冷得像冰窖，仿佛迎面走进了冷冻库。那种寒意直往骨头里钻，冷得手指都发麻。"
+    },
+    {
+      "trial_id": 19,
+      "part": 1,
+      "repetition": 1,
+      "target_family": "water_liquid",
+      "target_family_name": "WATER/LIQUID",
+      "target_category": "Environmental Transformation",
+      "excerpt": "It felt like something warm and liquid was flowing down my arm, though nothing was there. A smooth, slow trickle from shoulder to fingertips.",
+      "options": [
+        {
+          "family_id": "water_liquid",
+          "is_target": true,
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 28,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 700,
+            "duration_ms": 3500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.4,
+            "roughness": 0.08
+          },
+          "label": "A"
+        },
+        {
+          "family_id": "electricity_static",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "B"
+        },
+        {
+          "family_id": "tingling_prickling",
+          "is_target": false,
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "C"
+        }
+      ],
+      "correct_label": "A",
+      "excerpt_zh": "感觉像有什么温热的液体正顺着我的手臂往下流，然而那里其实什么也没有。那股流动平滑而稳定，像温水从肩头缓缓浇下，一路淌到手腕。"
+    }
+  ],
+  "part2_trials": [
+    {
+      "trial_id": 0,
+      "part": 2,
+      "target_family": "cold_ice",
+      "target_family_name": "COLD/ICE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The room went ice cold, like walking into a freezer. The kind of chill that sinks into your bones and doesn't leave even after you step away.",
+      "conditions": [
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 60,
+            "amplitude_pct": 15,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 500,
+            "duration_ms": 5000,
+            "modulation_hz": 0.1,
+            "thermal_delta_c": -4.0,
+            "roughness": 0.05
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 24,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1000,
+            "duration_ms": 4500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -3.5,
+            "roughness": 0.12
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 199,
+            "amplitude_pct": 7,
+            "waveform": "square",
+            "envelope": "fade_in_out",
+            "onset_ms": 454,
+            "duration_ms": 4551,
+            "modulation_hz": 2.03,
+            "thermal_delta_c": 3.9,
+            "roughness": 0.09
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "整个房间一下子冷得像冰窖，仿佛迎面走进了冷冻库。那种寒意直往骨头里钻，冷得手指都发麻。"
+    },
+    {
+      "trial_id": 1,
+      "part": 2,
+      "target_family": "tingling_prickling",
+      "target_family_name": "TINGLING/PRICKLING",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Tiny pinpricks crawling up my spine, like static electricity dancing on my skin. Not painful, but impossible to ignore.",
+      "conditions": [
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 200,
+            "amplitude_pct": 25,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 300,
+            "duration_ms": 2000,
+            "modulation_hz": 2.0,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.8
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 30,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 200,
+            "duration_ms": 2800,
+            "modulation_hz": 1.7,
+            "thermal_delta_c": -0.8,
+            "roughness": 0.66
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 39,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "burst",
+            "onset_ms": 1507,
+            "duration_ms": 3312,
+            "modulation_hz": 0.15,
+            "thermal_delta_c": -4.6,
+            "roughness": 0.74
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "细小如针刺般的麻点沿着我的脊背一路往上爬，像静电在皮肤上跳舞。不算疼，却让人根本无法忽视——那股挥之不去的酥麻持续不停。"
+    },
+    {
+      "trial_id": 2,
+      "part": 2,
+      "target_family": "fabric_veil_cobweb",
+      "target_family_name": "FABRIC/VEIL/COBWEB",
+      "target_category": "Liminal Materiality",
+      "excerpt": "Something gossamer-thin brushed across my face, like walking through an invisible cobweb. So light I almost didn't notice it.",
+      "conditions": [
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 32,
+            "amplitude_pct": 5,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1800,
+            "duration_ms": 5000,
+            "modulation_hz": 0.2,
+            "thermal_delta_c": -0.6,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 25,
+            "amplitude_pct": 3,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 2000,
+            "duration_ms": 4000,
+            "modulation_hz": 0.1,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.08
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 88,
+            "amplitude_pct": 50,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 1644,
+            "duration_ms": 1773,
+            "modulation_hz": 1.66,
+            "thermal_delta_c": 4.3,
+            "roughness": 0.4
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "有什么薄如蝉翼的东西轻轻掠过我的脸，像一头撞进了看不见的蛛网。轻得让我几乎怀疑自己是否真的感觉到了，但那丝发痒的痕迹却迟迟不散。"
+    },
+    {
+      "trial_id": 3,
+      "part": 2,
+      "target_family": "water_liquid",
+      "target_family_name": "WATER/LIQUID",
+      "target_category": "Environmental Transformation",
+      "excerpt": "It felt like something warm and liquid was flowing down my arm, though nothing was there. A smooth, slow trickle from shoulder to fingertips.",
+      "conditions": [
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 28,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 700,
+            "duration_ms": 3500,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.4,
+            "roughness": 0.08
+          },
+          "label": "A"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 80,
+            "amplitude_pct": 25,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 800,
+            "duration_ms": 4000,
+            "modulation_hz": 0.3,
+            "thermal_delta_c": -1.5,
+            "roughness": 0.02
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 119,
+            "amplitude_pct": 44,
+            "waveform": "pulse",
+            "envelope": "burst",
+            "onset_ms": 522,
+            "duration_ms": 2626,
+            "modulation_hz": 1.85,
+            "thermal_delta_c": 3.0,
+            "roughness": 0.66
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "感觉像有什么温热的液体正顺着我的手臂往下流，然而那里其实什么也没有。那股流动平滑而稳定，像温水从肩头缓缓浇下，一路淌到手腕。"
+    },
+    {
+      "trial_id": 4,
+      "part": 2,
+      "target_family": "pressure_force",
+      "target_family_name": "PRESSURE/FORCE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "Sudden pressure on my chest, like an invisible hand pressing down hard. It held me there for a few seconds before lifting.",
+      "conditions": [
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 269,
+            "amplitude_pct": 41,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 1172,
+            "duration_ms": 5710,
+            "modulation_hz": 0.1,
+            "thermal_delta_c": -4.3,
+            "roughness": 0.32
+          },
+          "label": "A"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 50,
+            "amplitude_pct": 90,
+            "waveform": "square",
+            "envelope": "sustained",
+            "onset_ms": 100,
+            "duration_ms": 3000,
+            "modulation_hz": 0.0,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.4
+          },
+          "label": "B"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 170,
+            "amplitude_pct": 82,
+            "waveform": "sine",
+            "envelope": "sustained",
+            "onset_ms": 120,
+            "duration_ms": 2400,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.32
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "胸口猛然压下一股力量，像一只看不见的手狠狠按住我。它将我死死钉在那里几秒钟，沉重得无法挣脱，随后又在一瞬间全部松开。"
+    },
+    {
+      "trial_id": 5,
+      "part": 2,
+      "target_family": "vibration_pulse",
+      "target_family_name": "VIBRATION/PULSE",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A deep, rhythmic pulsing that I felt in my chest, like a heartbeat that wasn't mine. It came in steady waves, then stopped.",
+      "conditions": [
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 159,
+            "amplitude_pct": 29,
+            "waveform": "noise",
+            "envelope": "rhythmic",
+            "onset_ms": 1536,
+            "duration_ms": 2315,
+            "modulation_hz": 1.62,
+            "thermal_delta_c": -2.8,
+            "roughness": 0.56
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 190,
+            "amplitude_pct": 42,
+            "waveform": "sine",
+            "envelope": "rhythmic",
+            "onset_ms": 25,
+            "duration_ms": 1100,
+            "modulation_hz": 2.4,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.2
+          },
+          "label": "B"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 120,
+            "amplitude_pct": 50,
+            "waveform": "pulse",
+            "envelope": "rhythmic",
+            "onset_ms": 50,
+            "duration_ms": 1500,
+            "modulation_hz": 3.0,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.15
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "我胸口深处传来一种低沉而有节律的搏动，像一颗不属于我的心脏在跳。它一波一波稳定袭来，每一下都在我全身回荡震颤。"
+    },
+    {
+      "trial_id": 6,
+      "part": 2,
+      "target_family": "mist_air_smoke",
+      "target_family_name": "MIST/AIR/SMOKE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "A gentle breeze passed through the room though all windows were closed, like walking through fog. It moved around me slowly, then was gone.",
+      "conditions": [
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 96,
+            "amplitude_pct": 49,
+            "waveform": "sine",
+            "envelope": "burst",
+            "onset_ms": 684,
+            "duration_ms": 898,
+            "modulation_hz": 0.03,
+            "thermal_delta_c": -2.2,
+            "roughness": 0.12
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 185,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 3200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": -2.3,
+            "roughness": 0.18
+          },
+          "label": "B"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 30,
+            "amplitude_pct": 10,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 2000,
+            "duration_ms": 4000,
+            "modulation_hz": 0.1,
+            "thermal_delta_c": -2.0,
+            "roughness": 0.05
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "明明所有窗户都关着，房间里却掠过一阵轻柔的风，像穿行在雾里。它在皮肤上留下微凉而潮湿的触感，几秒后便悄然消散。"
+    },
+    {
+      "trial_id": 7,
+      "part": 2,
+      "target_family": "absence_void",
+      "target_family_name": "ABSENCE/VOID",
+      "target_category": "Liminal Materiality",
+      "excerpt": "It felt like nothing was there but something was missing—like a hole in the air where a person should be. An empty shape pressing against you.",
+      "conditions": [
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 22,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 850,
+            "duration_ms": 2800,
+            "modulation_hz": 0.4,
+            "thermal_delta_c": -1.6,
+            "roughness": 0.18
+          },
+          "label": "A"
+        },
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 40,
+            "amplitude_pct": 8,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 1200,
+            "duration_ms": 3000,
+            "modulation_hz": 0.05,
+            "thermal_delta_c": -1.0,
+            "roughness": 0.1
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 31,
+            "amplitude_pct": 68,
+            "waveform": "noise",
+            "envelope": "rhythmic",
+            "onset_ms": 746,
+            "duration_ms": 4341,
+            "modulation_hz": 0.29,
+            "thermal_delta_c": 1.0,
+            "roughness": 0.61
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "感觉那里明明什么都没有，却又像缺失了什么——仿佛空气中有一个本该站着人的空洞。那是一种空茫而中空的异样感，好像那片空间本身有重量，却没有实体。"
+    },
+    {
+      "trial_id": 8,
+      "part": 2,
+      "target_family": "temperature_change",
+      "target_family_name": "TEMPERATURE_CHANGE",
+      "target_category": "Environmental Transformation",
+      "excerpt": "The air shifted from normal to burning hot in seconds, then back to cold. Like waves of heat and chill rolling through the space.",
+      "conditions": [
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 100,
+            "amplitude_pct": 35,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 600,
+            "duration_ms": 3500,
+            "modulation_hz": 0.5,
+            "thermal_delta_c": 3.0,
+            "roughness": 0.15
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 40,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 900,
+            "duration_ms": 4200,
+            "modulation_hz": 0.35,
+            "thermal_delta_c": 2.4,
+            "roughness": 0.2
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 173,
+            "amplitude_pct": 17,
+            "waveform": "square",
+            "envelope": "fade_in_out",
+            "onset_ms": 1431,
+            "duration_ms": 2897,
+            "modulation_hz": 0.46,
+            "thermal_delta_c": 3.1,
+            "roughness": 0.66
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "空气在短短几秒内从平常骤然变得灼热滚烫，接着又迅速转冷。像一阵阵热浪与寒意轮番冲刷全身，每一次转换都尖锐而分明。"
+    },
+    {
+      "trial_id": 9,
+      "part": 2,
+      "target_family": "electricity_static",
+      "target_family_name": "ELECTRICITY/STATIC",
+      "target_category": "Forceful Encounter",
+      "excerpt": "A cluster of energy hovering just above the skin, like sparks jumping between fingertips. The hair on my arms stood straight up.",
+      "conditions": [
+        {
+          "condition": "rule_based",
+          "profile": {
+            "frequency_hz": 250,
+            "amplitude_pct": 70,
+            "waveform": "noise",
+            "envelope": "burst",
+            "onset_ms": 50,
+            "duration_ms": 1500,
+            "modulation_hz": 3.0,
+            "thermal_delta_c": 0.0,
+            "roughness": 0.9
+          },
+          "label": "A"
+        },
+        {
+          "condition": "pipeline",
+          "profile": {
+            "frequency_hz": 180,
+            "amplitude_pct": 44,
+            "waveform": "noise",
+            "envelope": "fade_in_out",
+            "onset_ms": 180,
+            "duration_ms": 2200,
+            "modulation_hz": 1.2,
+            "thermal_delta_c": 1.7,
+            "roughness": 0.76
+          },
+          "label": "B"
+        },
+        {
+          "condition": "random",
+          "profile": {
+            "frequency_hz": 134,
+            "amplitude_pct": 54,
+            "waveform": "sine",
+            "envelope": "fade_in_out",
+            "onset_ms": 765,
+            "duration_ms": 2093,
+            "modulation_hz": 0.67,
+            "thermal_delta_c": 0.7,
+            "roughness": 0.1
+          },
+          "label": "C"
+        }
+      ],
+      "excerpt_zh": "一团能量悬停在皮肤上方，仿佛火花在指尖之间跳跃。手臂上的汗毛一下子都竖了起来，还有一种强烈的嗡鸣感，几乎像电流掠过般酥麻震颤。"
+    }
+  ]
+}
