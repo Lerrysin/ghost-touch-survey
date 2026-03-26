@@ -120,11 +120,13 @@ const HapticVisualizer = (() => {
 
   function getWaveformColor(profile) {
     const thermal = profile.thermal_delta_c || 0;
-    if (thermal < -2) return '#60a5fa';      // cold blue
-    if (thermal < -0.5) return '#93c5fd';    // cool
-    if (thermal > 2) return '#f87171';       // hot red
-    if (thermal > 0.5) return '#fbbf24';     // warm
-    return '#a78bfa';                         // neutral purple
+    if (thermal < -15) return '#2563eb';      // very cold
+    if (thermal < -5) return '#60a5fa';       // cold blue
+    if (thermal < -1) return '#93c5fd';       // cool
+    if (thermal > 15) return '#dc2626';       // very hot
+    if (thermal > 5) return '#f87171';        // hot red
+    if (thermal > 1) return '#fbbf24';        // warm
+    return '#a78bfa';                          // neutral purple
   }
 
   /**
@@ -192,8 +194,8 @@ const HapticVisualizer = (() => {
     const row = document.createElement('div');
     row.className = 'param-row';
 
-    // Map -5...+5 to 0...100%
-    const pct = ((thermal + 5) / 10) * 100;
+    // Map -30...+30 to 0...100%
+    const pct = ((thermal + 30) / 60) * 100;
     const sign = thermal >= 0 ? '+' : '';
 
     row.innerHTML = `

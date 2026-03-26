@@ -47,8 +47,8 @@
   // ============================================================
   const SLIDERS = [
     { id: 'amp',     key: 'amplitude_pct',    min: 0,    max: 100,  step: 1,   def: 50,   fmt: v => v + '%' },
-    { id: 'freq',    key: 'frequency_hz',     min: 20,   max: 300,  step: 1,   def: 150,  fmt: v => v + 'Hz' },
-    { id: 'thermal', key: 'thermal_delta_c',  min: -5,   max: 5,    step: 0.5, def: 0,    fmt: v => (v >= 0 ? '+' : '') + Number(v).toFixed(1) + '°C' },
+    { id: 'freq',    key: 'frequency_hz',     min: 1,    max: 500,  step: 1,   def: 150,  fmt: v => v + 'Hz' },
+    { id: 'thermal', key: 'thermal_delta_c',  min: -30,  max: 30,   step: 1,   def: 0,    fmt: v => (v >= 0 ? '+' : '') + v + '°C' },
     { id: 'rough',   key: 'roughness',        min: 0,    max: 100,  step: 1,   def: 30,   fmt: v => v },
   ];
 
@@ -85,9 +85,6 @@
     s('p1-amp', 'part1_param_amp'); s('p1-freq', 'part1_param_freq');
     s('p1-thermal', 'part1_param_thermal'); s('p1-rough', 'part1_param_rough');
     s('p1-task', 'part1_task'); st('part1-start', 'btn_start_part1');
-    // Part 2 intro
-    st('p2-title', 'part2_title'); s('p2-desc', 'part2_desc');
-    s('p2-task', 'part2_task'); st('p2-how', 'part2_how'); st('part2-start', 'btn_start_part2');
     // Debrief
     st('db-title', 'debrief_title');
     st('db-strategy-label', 'debrief_strategy');
@@ -146,16 +143,12 @@
 
   function updateProgress() {
     if (!stimuli) return;
-    const total = 2 + stimuli.part1_trials.length + stimuli.part2_trials.length + 1;
+    const total = 2 + stimuli.part1_trials.length + 1; // consent + demo + trials + debrief
     let step = 0;
     if (currentPage === 'consent') step = 0;
     else if (currentPage === 'demographics') step = 1;
     else if (currentPage === 'part1-intro') step = 2;
-    else if (currentPage === 'trial') {
-      if (currentPart === 1) step = 2 + currentTrialIdx;
-      else if (currentPart === 2) step = 2 + stimuli.part1_trials.length + currentTrialIdx;
-    }
-    else if (currentPage === 'part2-intro') step = 2 + stimuli.part1_trials.length;
+    else if (currentPage === 'trial') step = 2 + currentTrialIdx;
     else if (currentPage === 'debrief') step = total - 1;
     else if (currentPage === 'complete') step = total;
     const pct = Math.round((step / total) * 100);
@@ -186,9 +179,6 @@
     });
     document.getElementById('part1-start').addEventListener('click', () => {
       currentPart = 1; currentTrialIdx = 0; showPart1Trial();
-    });
-    document.getElementById('part2-start').addEventListener('click', () => {
-      currentPart = 2; currentTrialIdx = 0; showPart2Trial();
     });
     document.getElementById('debrief-submit').addEventListener('click', () => {
       collectDebrief(); finishSurvey();
@@ -270,7 +260,7 @@
 
   function showPart1Trial() {
     if (currentTrialIdx >= stimuli.part1_trials.length) {
-      showPage('part2-intro');
+      showPage('debrief');
       return;
     }
     const trial = stimuli.part1_trials[currentTrialIdx];
@@ -379,135 +369,6 @@
   }
 
   // ============================================================
-  // Part 2: Likert Rating
-  // ============================================================
-  function showPart2Trial() {
-    if (currentTrialIdx >= stimuli.part2_trials.length) {
-      showPage('debrief');
-      return;
-    }
-    const trial = stimuli.part2_trials[currentTrialIdx];
-    const trialPage = document.getElementById('trial');
-    HapticVisualizer.stopAnimation();
-
-    const trialNum = I18N.getLang() === 'zh'
-      ? `${t('part1_trial')} ${currentTrialIdx + 1} ${t('part1_of')} ${stimuli.part2_trials.length} 题`
-      : `${t('part1_trial')} ${currentTrialIdx + 1} ${t('part1_of')} ${stimuli.part2_trials.length}`;
-
-    trialPage.innerHTML = `
-      <div class="trial-header">
-        <span class="part-label">${t('part2_label')}</span>
-        <div class="trial-count">${trialNum}</div>
-      </div>
-      <div class="excerpt-card">
-        <div class="label">${t('part1_excerpt_label')}</div>
-        <div class="text">"${trial.excerpt}"</div>
-        ${I18N.getLang() === 'zh' && trial.excerpt_zh ? '<div class="text-zh">' + trial.excerpt_zh + '</div>' : ''}
-      </div>
-      <div class="trial-instruction">${t('part2_instruction')}</div>
-      <div class="likert-profiles" id="likert-cards"></div>
-      <div class="btn-group">
-        ${currentTrialIdx > 0 ? `<button class="btn btn-secondary" id="part2-back">${t('btn_back')}</button>` : ''}
-        <button class="btn btn-primary" id="part2-next" disabled>${t('btn_next')}</button>
-      </div>
-    `;
-
-    const container = document.getElementById('likert-cards');
-    const ratings = {};
-
-    trial.conditions.forEach(cond => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'likert-card-wrapper';
-
-      // Profile visualization
-      const card = HapticVisualizer.createProfileCard(cond.label, cond.profile, () => {});
-      card.style.cursor = 'default';
-      wrapper.appendChild(card);
-
-      // Likert scale
-      const scaleDiv = document.createElement('div');
-      scaleDiv.className = 'likert-scale';
-      scaleDiv.innerHTML = `
-        <span class="likert-anchor">${t('likert_low')}</span>
-        <div class="likert-buttons" data-label="${cond.label}">
-          ${[1,2,3,4,5,6,7].map(n =>
-            `<button class="likert-btn" data-rating="${n}">${n}</button>`
-          ).join('')}
-        </div>
-        <span class="likert-anchor">${t('likert_high')}</span>
-      `;
-      wrapper.appendChild(scaleDiv);
-      container.appendChild(wrapper);
-
-      // Click handlers
-      scaleDiv.querySelectorAll('.likert-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          scaleDiv.querySelectorAll('.likert-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          ratings[cond.label] = parseInt(btn.dataset.rating);
-          // Enable next if all 3 rated
-          if (Object.keys(ratings).length === trial.conditions.length) {
-            document.getElementById('part2-next').disabled = false;
-          }
-        });
-      });
-    });
-
-    HapticVisualizer.startAnimation();
-    trialStartTime = performance.now();
-
-    // Restore previous ratings if going back
-    const prev = responses.part2[currentTrialIdx];
-    if (prev && prev.ratings) {
-      Object.entries(prev.ratings).forEach(([label, rating]) => {
-        ratings[label] = rating;
-        const btn = container.querySelector(`[data-label="${label}"] [data-rating="${rating}"]`);
-        if (btn) btn.classList.add('active');
-      });
-      if (Object.keys(ratings).length === trial.conditions.length) {
-        document.getElementById('part2-next').disabled = false;
-      }
-    }
-
-    const backBtn = document.getElementById('part2-back');
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        savePart2Response(trial, ratings);
-        currentTrialIdx--;
-        showPart2Trial();
-      });
-    }
-
-    document.getElementById('part2-next').addEventListener('click', () => {
-      if (Object.keys(ratings).length < trial.conditions.length) return;
-      savePart2Response(trial, ratings);
-      currentTrialIdx++;
-      showPart2Trial();
-    });
-
-    showPage('trial');
-  }
-
-  function savePart2Response(trial, ratings) {
-    const rt = Math.round(performance.now() - trialStartTime);
-    const conditionMap = {};
-    trial.conditions.forEach(c => { conditionMap[c.label] = c.condition; });
-    const entry = {
-      trial_id: trial.trial_id,
-      target_family: trial.target_family,
-      target_family_name: trial.target_family_name,
-      ratings: { ...ratings },
-      condition_map: conditionMap,
-      rt_ms: rt,
-    };
-    if (responses.part2[currentTrialIdx]) {
-      responses.part2[currentTrialIdx] = entry;
-    } else {
-      responses.part2.push(entry);
-    }
-  }
-
-  // ============================================================
   // Debrief
   // ============================================================
   function collectDebrief() {
@@ -540,17 +401,6 @@
     showPage('complete');
     HapticVisualizer.stopAnimation();
 
-    // Compute summary for DB
-    let meanPipelineRating = null;
-    if (responses.part2.length > 0) {
-      const pRatings = responses.part2.map(trial => {
-        for (const [label, cond] of Object.entries(trial.condition_map || {})) {
-          if (cond === 'pipeline') return trial.ratings[label] || null;
-        }
-        return null;
-      }).filter(r => r !== null);
-      if (pRatings.length > 0) meanPipelineRating = pRatings.reduce((a, b) => a + b, 0) / pRatings.length;
-    }
     let durationS = null;
     if (responses.metadata.start_time && responses.metadata.end_time) {
       durationS = Math.round((new Date(responses.metadata.end_time) - new Date(responses.metadata.start_time)) / 1000);
@@ -566,8 +416,8 @@
       gender: demo.gender || null,
       vr_experience: demo.vr_experience || null,
       ghost_familiarity: demo.ghost_familiarity || null,
-      part1_accuracy: null,  // not applicable in new design
-      part2_pipeline_rank: meanPipelineRating,
+      part1_accuracy: null,
+      part2_pipeline_rank: null,
       completion_code: code,
       duration_s: durationS,
       raw_json: responses,
