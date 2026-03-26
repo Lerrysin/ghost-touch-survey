@@ -112,6 +112,7 @@ const I18N = (() => {
       redirect_click: 'click here',
       completion_code: 'Completion code:',
       btn_download: 'Download Response Data (JSON)',
+      completion_note: 'You may now close this page. Thank you for your contribution to haptic research!',
       submitting: 'Submitting your responses...',
       submitting_wait: 'Please wait while we save your data.',
 
@@ -236,6 +237,7 @@ const I18N = (() => {
       redirect_click: '点击这里',
       completion_code: '完成码：',
       btn_download: '下载回答数据 (JSON)',
+      completion_note: '您现在可以关闭此页面。感谢您对触觉研究的贡献！',
       submitting: '正在提交您的回答...',
       submitting_wait: '请稍候，正在保存数据。',
 

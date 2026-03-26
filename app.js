@@ -673,30 +673,25 @@
     }
 
     if (PROLIFIC_PID) {
+      // Prolific participant — redirect
       completePage.innerHTML = `
         <div class="completion">
           <h2>${t('thankyou')}</h2>
           <p>${submitted ? t('responses_recorded') : '<span style="color:#ef4444">' + t('responses_failed') + '</span>'}</p>
-          <p>${t('accuracy_label')} <strong>${accuracy}%</strong> (${part1Correct}/${part1Total})</p>
           <p style="margin-top:24px">${t('redirecting')}</p>
           <p class="muted">${t('redirect_manual')} <a href="${PROLIFIC_REDIRECT_BASE}${code}">${t('redirect_click')}</a>.</p>
         </div>
       `;
       setTimeout(() => { window.location.href = PROLIFIC_REDIRECT_BASE + code; }, 3000);
     } else {
+      // Normal participant — simple thank you
       completePage.innerHTML = `
         <div class="completion">
           <h2>${t('thankyou')}</h2>
-          <p>${submitted ? t('responses_recorded') : t('responses_local')}</p>
-          <p>${t('accuracy_label')} <strong>${accuracy}%</strong> (${part1Correct}/${part1Total})</p>
-          <div style="margin:24px 0">
-            <p><strong>${t('completion_code')}</strong></p>
-            <div class="completion-code">${code}</div>
-          </div>
-          <p><button class="btn btn-primary" id="download-data">${t('btn_download')}</button></p>
+          <p>${submitted ? t('responses_recorded') : t('responses_failed')}</p>
+          <p class="muted" style="margin-top:16px">${t('completion_note')}</p>
         </div>
       `;
-      document.getElementById('download-data').addEventListener('click', downloadData);
     }
   }
 
