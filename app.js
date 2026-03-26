@@ -372,7 +372,7 @@
         selectedLabel = label;
         noneSelected = false;
         document.getElementById('none-match-btn').classList.remove('active');
-        document.getElementById('none-match-reason').style.display = 'none';
+        document.getElementById('none-match-panel').style.display = 'none';
         document.getElementById('part1-next').disabled = false;
       });
       cardsContainer.appendChild(card);
