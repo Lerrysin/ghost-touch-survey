@@ -9,7 +9,8 @@
   // ============================================================
   // Configuration
   // ============================================================
-  const WEBHOOK_URL = '__WEBHOOK_URL__';
+  const SUPABASE_URL = 'https://sbadhyaildhfmohooomj.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiYWRoeWFpbGRoZm1vaG9vb21qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NDQxMDgsImV4cCI6MjA5MDEyMDEwOH0.jWCHY3U0sybqw89be94x26AG3XrtHLKGuzHRRSOs8_o';
   const PROLIFIC_REDIRECT_BASE = 'https://app.prolific.com/submissions/complete?cc=';
 
   // Prolific URL Parameters
@@ -244,6 +245,15 @@
     document.getElementById('debrief-submit').addEventListener('click', () => {
       collectDebrief();
       finishSurvey();
+    });
+
+    // Radio button visual feedback (for browsers without :has() support)
+    document.querySelectorAll('.radio-group input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const group = radio.closest('.radio-group');
+        group.querySelectorAll('label').forEach(l => l.classList.remove('checked'));
+        radio.closest('label').classList.add('checked');
+      });
     });
   }
 
@@ -585,20 +595,58 @@
     showPage('complete');
     HapticVisualizer.stopAnimation();
 
+    // Submit to Supabase
     let submitted = false;
-    if (WEBHOOK_URL && WEBHOOK_URL !== '__WEBHOOK_URL__') {
-      for (let attempt = 0; attempt < 3; attempt++) {
-        try {
-          const resp = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify(responses),
-          });
-          if (resp.ok) { submitted = true; break; }
-        } catch (err) {
-          console.warn(`Submit attempt ${attempt + 1} failed:`, err);
-          if (attempt < 2) await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+    const part1Acc = part1Total > 0 ? (part1Correct / part1Total) : null;
+    // Compute pipeline mean rank
+    let pipelineRank = null;
+    if (responses.part2.length > 0) {
+      const ranks = responses.part2.map(trial => {
+        for (const [label, cond] of Object.entries(trial.condition_map || {})) {
+          if (cond === 'pipeline') return trial.rankings[label] || null;
         }
+        return null;
+      }).filter(r => r !== null);
+      if (ranks.length > 0) pipelineRank = ranks.reduce((a, b) => a + b, 0) / ranks.length;
+    }
+    // Duration
+    let durationS = null;
+    if (responses.metadata.start_time && responses.metadata.end_time) {
+      durationS = Math.round((new Date(responses.metadata.end_time) - new Date(responses.metadata.start_time)) / 1000);
+    }
+    const demo = responses.demographics || {};
+    const row = {
+      prolific_pid: PROLIFIC_PID || null,
+      study_id: STUDY_ID || null,
+      session_id: SESSION_ID || null,
+      language: I18N.getLang(),
+      age: demo.age || null,
+      gender: demo.gender || null,
+      vr_experience: demo.vr_experience || null,
+      ghost_familiarity: demo.ghost_familiarity || null,
+      part1_accuracy: part1Acc,
+      part2_pipeline_rank: pipelineRank,
+      completion_code: code,
+      duration_s: durationS,
+      raw_json: responses,
+    };
+
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const resp = await fetch(`${SUPABASE_URL}/rest/v1/responses`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify(row),
+        });
+        if (resp.ok) { submitted = true; break; }
+      } catch (err) {
+        console.warn(`Submit attempt ${attempt + 1} failed:`, err);
+        if (attempt < 2) await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
       }
     }
 

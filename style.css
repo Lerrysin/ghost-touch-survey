@@ -193,25 +193,32 @@ body {
   gap: 6px;
   font-weight: 400;
   padding: 10px 14px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   min-height: 44px; /* touch target */
+  position: relative;
+}
+.radio-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 .radio-group label:hover {
   background: var(--selected);
 }
-.radio-group input:checked + span {
-  color: var(--primary);
-  font-weight: 600;
-}
-.radio-group input:checked ~ span {
-  color: var(--primary);
-}
+.radio-group label.checked,
 .radio-group label:has(input:checked) {
   border-color: var(--selected-border);
   background: var(--selected);
+}
+.radio-group label.checked span,
+.radio-group label:has(input:checked) span {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* Buttons */
