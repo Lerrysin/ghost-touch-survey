@@ -357,9 +357,20 @@
         </div>
       </div>
       <div class="btn-group">
+        ${currentTrialIdx > 0 ? `<button class="btn btn-secondary" id="part1-back">${t('btn_back')}</button>` : ''}
         <button class="btn btn-primary" id="part1-next" disabled>${t('btn_next')}</button>
       </div>
     `;
+
+    // Back button
+    const backBtn = document.getElementById('part1-back');
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        responses.part1.pop(); // remove last response
+        currentTrialIdx--;
+        showPart1Trial();
+      });
+    }
 
     const cardsContainer = document.getElementById('part1-cards');
     let selectedLabel = null;
@@ -486,9 +497,20 @@
       </div>
       <div class="profile-cards" id="part2-cards"></div>
       <div class="btn-group">
+        ${currentTrialIdx > 0 ? `<button class="btn btn-secondary" id="part2-back">${t('btn_back')}</button>` : ''}
         <button class="btn btn-primary" id="part2-next" disabled>${t('btn_next')}</button>
       </div>
     `;
+
+    // Back button
+    const backBtn2 = document.getElementById('part2-back');
+    if (backBtn2) {
+      backBtn2.addEventListener('click', () => {
+        responses.part2.pop();
+        currentTrialIdx--;
+        showPart2Trial();
+      });
+    }
 
     const cardsContainer = document.getElementById('part2-cards');
     let selectedCard = null;

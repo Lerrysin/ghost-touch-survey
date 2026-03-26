@@ -69,6 +69,7 @@ const I18N = (() => {
       part1_of: 'of',
       part1_excerpt_label: 'Ghost-Touch Description',
       part1_instruction: 'Which haptic profile best matches the sensation described above? Click to select.',
+      btn_back: 'Back',
       btn_next: 'Next',
 
       // Part 2
@@ -196,6 +197,7 @@ const I18N = (() => {
       part1_of: '题，共',
       part1_excerpt_label: '幽灵触感描述',
       part1_instruction: '哪个触觉配置文件最匹配以上描述的触感？点击选择。',
+      btn_back: '上一题',
       btn_next: '下一题',
 
       part2_title: '第二部分：偏好排序',
