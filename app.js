@@ -295,8 +295,11 @@
         ${I18N.getLang() === 'zh' && trial.excerpt_zh ? '<div class="text-zh">' + trial.excerpt_zh + '</div>' : ''}
       </div>
       <div class="trial-instruction">${t('part1_instruction')}</div>
-      <div class="annotation-panel">
-        ${buildSliderHTML()}
+      <div class="annotation-area">
+        <div class="annotation-preview" id="live-preview"></div>
+        <div class="annotation-panel">
+          ${buildSliderHTML()}
+        </div>
       </div>
       <div class="btn-group">
         ${currentTrialIdx > 0 ? `<button class="btn btn-secondary" id="part1-back">${t('btn_back')}</button>` : ''}
@@ -306,9 +309,31 @@
 
     attachSliderListeners();
 
+    // Live preview card — updates in real time as sliders move
+    const liveProfile = collectSliderValues();
+    const previewEl = document.getElementById('live-preview');
+    const previewCard = HapticVisualizer.createProfileCard('', liveProfile, null);
+    previewCard.style.cursor = 'default';
+    previewEl.appendChild(previewCard);
+    HapticVisualizer.startAnimation();
+
+    const paramsEl = previewCard.querySelector('.profile-params');
+    function updatePreview() {
+      const vals = collectSliderValues();
+      Object.keys(vals).forEach(k => { liveProfile[k] = vals[k]; });
+      HapticVisualizer.renderProfileParams(paramsEl, liveProfile);
+    }
+    SLIDERS.forEach(s => {
+      const slider = document.getElementById('slider-' + s.id);
+      if (slider) slider.addEventListener('input', updatePreview);
+    });
+
     // Restore previous answer if going back
     const prev = responses.part1[currentTrialIdx];
-    if (prev) restoreSliderValues(prev.profile);
+    if (prev) {
+      restoreSliderValues(prev.profile);
+      updatePreview();
+    }
 
     trialStartTime = performance.now();
 
