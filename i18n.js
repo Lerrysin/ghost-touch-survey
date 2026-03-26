@@ -18,7 +18,7 @@ const I18N = (() => {
       consent_purpose_title: 'Purpose',
       consent_purpose: 'This study investigates whether computer-generated haptic (touch) profiles meaningfully correspond to descriptions of ghost-touch sensations. Your task is to match text descriptions to visual representations of haptic profiles, and to rank different haptic profiles by how well they match descriptions.',
       consent_whatyoudo_title: 'What You Will Do',
-      consent_part1: '<strong>Part 1 (~10 min):</strong> Read 20 short ghost-touch descriptions and select the best-matching haptic profile from 3 options.',
+      consent_part1: '<strong>Part 1 (~5 min):</strong> Read 10 short ghost-touch descriptions and select the best-matching haptic profile from 3 options.',
       consent_part2: '<strong>Part 2 (~5 min):</strong> Read 10 descriptions and rank 3 haptic profiles by how well each matches.',
       consent_part3: '<strong>Brief demographics and debrief (~2 min).</strong>',
       consent_haptic_title: 'Haptic Profiles',
@@ -55,7 +55,7 @@ const I18N = (() => {
 
       // Part 1
       part1_title: 'Part 1: Matching Task',
-      part1_desc: 'You will read <strong>20 short descriptions</strong> of ghost-touch sensations. For each description, you will see <strong>3 haptic profile cards</strong>. Each card visualizes a different set of haptic parameters:',
+      part1_desc: 'You will read <strong>10 short descriptions</strong> of ghost-touch sensations. For each description, you will see <strong>3 haptic profile cards</strong>. Each card visualizes a different set of haptic parameters:',
       part1_param_wave: '<strong>Animated waveform:</strong> shows the vibration pattern (shape, speed, noise level)',
       part1_param_amp: '<strong>Amplitude:</strong> how strong the vibration is',
       part1_param_thermal: '<strong>Thermal:</strong> temperature shift from cold (blue, left) to warm (red, right)',
@@ -147,7 +147,7 @@ const I18N = (() => {
       consent_purpose_title: '研究目的',
       consent_purpose: '本研究旨在探究计算机生成的触觉配置文件是否能有效对应幽灵触感的文字描述。您的任务是将文字描述与触觉配置文件的可视化表示进行匹配，并对不同的触觉配置文件按匹配程度进行排序。',
       consent_whatyoudo_title: '您将做什么',
-      consent_part1: '<strong>第一部分（约10分钟）：</strong>阅读20段幽灵触感的描述，从3个选项中选择最匹配的触觉配置文件。',
+      consent_part1: '<strong>第一部分（约5分钟）：</strong>阅读10段幽灵触感的描述，从3个选项中选择最匹配的触觉配置文件。',
       consent_part2: '<strong>第二部分（约5分钟）：</strong>阅读10段描述，对3个触觉配置文件按匹配程度排序。',
       consent_part3: '<strong>简短的基本信息和反馈（约2分钟）。</strong>',
       consent_haptic_title: '触觉配置文件',
@@ -182,7 +182,7 @@ const I18N = (() => {
       demo_alert: '请回答所有问题。',
 
       part1_title: '第一部分：匹配任务',
-      part1_desc: '您将阅读 <strong>20段</strong> 幽灵触感描述。每段描述下方有 <strong>3张触觉配置卡片</strong>，每张卡片展示一组不同的触觉参数：',
+      part1_desc: '您将阅读 <strong>10段</strong> 幽灵触感描述。每段描述下方有 <strong>3张触觉配置卡片</strong>，每张卡片展示一组不同的触觉参数：',
       part1_param_wave: '<strong>动态波形：</strong>显示振动模式（形状、速度、噪声水平）',
       part1_param_amp: '<strong>振幅：</strong>振动的强弱',
       part1_param_thermal: '<strong>温度：</strong>温度变化，从冷（蓝色，左侧）到热（红色，右侧）',
