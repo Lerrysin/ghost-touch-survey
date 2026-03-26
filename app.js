@@ -50,8 +50,6 @@
     { id: 'freq',    key: 'frequency_hz',     min: 20,   max: 300,  step: 1,   def: 150,  fmt: v => v + 'Hz' },
     { id: 'thermal', key: 'thermal_delta_c',  min: -5,   max: 5,    step: 0.5, def: 0,    fmt: v => (v >= 0 ? '+' : '') + Number(v).toFixed(1) + '°C' },
     { id: 'rough',   key: 'roughness',        min: 0,    max: 100,  step: 1,   def: 30,   fmt: v => v },
-    { id: 'onset',   key: 'onset_ms',         min: 50,   max: 2000, step: 10,  def: 500,  fmt: v => v + 'ms' },
-    { id: 'dur',     key: 'duration_ms',       min: 200,  max: 6000, step: 50,  def: 2000, fmt: v => v + 'ms' },
   ];
 
   // ============================================================
@@ -86,7 +84,6 @@
     st('p1-param-intro', 'part1_param_intro');
     s('p1-amp', 'part1_param_amp'); s('p1-freq', 'part1_param_freq');
     s('p1-thermal', 'part1_param_thermal'); s('p1-rough', 'part1_param_rough');
-    s('p1-onset', 'part1_param_onset'); s('p1-dur', 'part1_param_dur');
     s('p1-task', 'part1_task'); st('part1-start', 'btn_start_part1');
     // Part 2 intro
     st('p2-title', 'part2_title'); s('p2-desc', 'part2_desc');
@@ -299,6 +296,10 @@
         <div class="annotation-preview" id="live-preview"></div>
         <div class="annotation-panel">
           ${buildSliderHTML()}
+          <div class="annotation-text-group">
+            <label class="annotation-text-label" for="annotation-note">${t('annotation_note_label')}</label>
+            <textarea id="annotation-note" class="annotation-note" placeholder="${t('annotation_note_ph')}" rows="3"></textarea>
+          </div>
         </div>
       </div>
       <div class="btn-group">
@@ -333,6 +334,8 @@
     if (prev) {
       restoreSliderValues(prev.profile);
       updatePreview();
+      const noteEl = document.getElementById('annotation-note');
+      if (noteEl && prev.note) noteEl.value = prev.note;
     }
 
     trialStartTime = performance.now();
@@ -358,11 +361,13 @@
 
   function savePart1Response(trial) {
     const rt = Math.round(performance.now() - trialStartTime);
+    const noteEl = document.getElementById('annotation-note');
     const entry = {
       trial_id: trial.trial_id,
       target_family: trial.target_family,
       target_family_name: trial.target_family_name,
       profile: collectSliderValues(),
+      note: noteEl ? noteEl.value.trim() : '',
       rt_ms: rt,
     };
     // Update or insert

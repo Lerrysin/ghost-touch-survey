@@ -758,6 +758,36 @@ body {
   flex-shrink: 0;
 }
 
+/* Annotation text note */
+.annotation-text-group {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.annotation-text-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.annotation-note {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 60px;
+  background: #fff;
+}
+.annotation-note:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
 /* ============================================================
    Mobile Responsive
    ============================================================ */

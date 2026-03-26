@@ -29,9 +29,9 @@ const HapticVisualizer = (() => {
     }
 
     // Waveform parameters
-    const freq = profile.frequency_hz || 150;
-    const amp = (profile.amplitude_pct || 50) / 100;
-    const rough = profile.roughness || 0;
+    const freq = profile.frequency_hz != null ? profile.frequency_hz : 150;
+    const amp = (profile.amplitude_pct != null ? profile.amplitude_pct : 50) / 100;
+    const rough = profile.roughness != null ? profile.roughness : 0;
     const modHz = profile.modulation_hz || 0;
     const waveform = profile.waveform || 'sine';
 
