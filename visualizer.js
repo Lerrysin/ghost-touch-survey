@@ -141,8 +141,6 @@ const HapticVisualizer = (() => {
       amp: t('param_amplitude') || 'Amplitude',
       thermal: t('param_thermal') || 'Thermal',
       rough: t('param_roughness') || 'Roughness',
-      onset: t('param_onset') || 'Onset',
-      dur: t('param_duration') || 'Duration',
     };
 
     // 1. Amplitude bar
@@ -159,18 +157,6 @@ const HapticVisualizer = (() => {
     const roughRow = createParamRow(labels.rough, roughPct, '', 0, 100,
       getRoughnessColor(profile.roughness));
     container.appendChild(roughRow);
-
-    // 4. Onset bar
-    const onsetNorm = Math.min((profile.onset_ms || 500) / 2000 * 100, 100);
-    const onsetRow = createParamRow(labels.onset, profile.onset_ms || 500, 'ms', 0, 100,
-      '#8b5cf6', onsetNorm);
-    container.appendChild(onsetRow);
-
-    // 5. Duration bar
-    const durNorm = Math.min((profile.duration_ms || 2000) / 6000 * 100, 100);
-    const durRow = createParamRow(labels.dur, profile.duration_ms || 2000, 'ms', 0, 100,
-      '#6366f1', durNorm);
-    container.appendChild(durRow);
   }
 
   function createParamRow(label, value, unit, min, max, color, normalizedPct) {
